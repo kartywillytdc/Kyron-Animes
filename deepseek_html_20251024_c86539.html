@@ -1,0 +1,1181 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kyron Animes - A Nova Era dos Animes e Mangás</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #8a2be2;
+            --secondary-color: #4b0082;
+            --accent-color: #9370db;
+            --dark-bg: #121212;
+            --darker-bg: #0a0a0a;
+            --text-color: #f0f0f0;
+            --card-bg: #1e1e1e;
+            --gradient: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--dark-bg);
+            color: var(--text-color);
+            overflow-x: hidden;
+        }
+
+        header {
+            background: var(--gradient);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .logo {
+            height: 50px;
+            width: auto;
+            border-radius: 10px;
+        }
+
+        .logo-text {
+            font-size: 1.8rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: var(--text-color);
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+        }
+
+        nav a:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .auth-buttons {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .btn {
+            padding: 0.6rem 1.5rem;
+            border-radius: 30px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: none;
+        }
+
+        .btn-primary {
+            background: var(--text-color);
+            color: var(--primary-color);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--text-color);
+            border: 2px solid var(--text-color);
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero {
+            padding: 4rem 2rem;
+            text-align: center;
+            background: linear-gradient(rgba(18, 18, 18, 0.8), rgba(18, 18, 18, 0.9)), url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="%23121212"/><path d="M0 0L100 100M100 0L0 100" stroke="%234b0082" stroke-width="1"/></svg>');
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 2px 10px rgba(138, 43, 226, 0.3);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+            line-height: 1.6;
+        }
+
+        .comparison {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin: 3rem 0;
+            flex-wrap: wrap;
+        }
+
+        .platform {
+            background-color: var(--card-bg);
+            padding: 2rem;
+            border-radius: 15px;
+            width: 300px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .platform:hover {
+            transform: translateY(-10px);
+        }
+
+        .platform h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .platform ul {
+            list-style-type: none;
+        }
+
+        .platform li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .platform li:last-child {
+            border-bottom: none;
+        }
+
+        .platform i {
+            margin-right: 0.5rem;
+            color: var(--accent-color);
+        }
+
+        .crunchyroll {
+            border-top: 5px solid #f47521;
+        }
+
+        .tomato {
+            border-top: 5px solid #ff6347;
+        }
+
+        .kyron {
+            border-top: 5px solid var(--primary-color);
+            box-shadow: 0 8px 25px rgba(138, 43, 226, 0.3);
+        }
+
+        .fusion-animation {
+            margin: 4rem auto;
+            width: 300px;
+            height: 150px;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .fusion-logo {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            position: absolute;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 2rem;
+            color: white;
+            font-weight: bold;
+            transition: all 1.5s ease;
+        }
+
+        .cr-logo {
+            background-color: #f47521;
+            left: 0;
+        }
+
+        .tomato-logo {
+            background-color: #ff6347;
+            right: 0;
+        }
+
+        .kyron-logo {
+            background: var(--gradient);
+            opacity: 0;
+            transform: scale(0.5);
+        }
+
+        .fusion-animation:hover .cr-logo,
+        .fusion-animation:hover .tomato-logo {
+            transform: translateX(0) scale(0.8);
+            opacity: 0.7;
+        }
+
+        .fusion-animation:hover .cr-logo {
+            left: 50%;
+            transform: translateX(-50%) scale(0.8);
+        }
+
+        .fusion-animation:hover .tomato-logo {
+            right: 50%;
+            transform: translateX(50%) scale(0.8);
+        }
+
+        .fusion-animation:hover .kyron-logo {
+            opacity: 1;
+            transform: scale(1);
+            z-index: 10;
+        }
+
+        .ios-simulator {
+            background-color: var(--darker-bg);
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        .simulator-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .iphone-frame {
+            width: 320px;
+            height: 650px;
+            background-color: #111;
+            border-radius: 40px;
+            padding: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+            position: relative;
+            overflow: hidden;
+            border: 8px solid #333;
+        }
+
+        .iphone-screen {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #1a1a2e, #16213e);
+            border-radius: 30px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .app-home {
+            padding: 20px;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .app-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .app-logo {
+            font-weight: bold;
+            font-size: 1.2rem;
+            color: var(--primary-color);
+        }
+
+        .app-nav {
+            display: flex;
+            gap: 15px;
+        }
+
+        .app-nav i {
+            font-size: 1.2rem;
+            color: #aaa;
+        }
+
+        .welcome-msg {
+            margin-bottom: 30px;
+            text-align: left;
+        }
+
+        .carousel {
+            display: flex;
+            gap: 15px;
+            overflow-x: auto;
+            margin-bottom: 30px;
+            padding-bottom: 10px;
+        }
+
+        .carousel-item {
+            min-width: 200px;
+            height: 120px;
+            border-radius: 10px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-weight: bold;
+        }
+
+        .categories {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+        }
+
+        .category {
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 15px;
+            text-align: center;
+        }
+
+        .category i {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: var(--accent-color);
+        }
+
+        .simulator-controls {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .catalog {
+            padding: 4rem 2rem;
+            background-color: var(--darker-bg);
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            font-size: 2.5rem;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .catalog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .anime-card, .manga-card {
+            background-color: var(--card-bg);
+            border-radius: 15px;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .anime-card:hover, .manga-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .card-image {
+            height: 300px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .card-content {
+            padding: 1.5rem;
+        }
+
+        .card-content h3 {
+            margin-bottom: 0.5rem;
+        }
+
+        .card-content p {
+            color: #aaa;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .card-actions {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .login-modal, .admin-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background-color: var(--card-bg);
+            padding: 2rem;
+            border-radius: 15px;
+            width: 400px;
+            max-width: 90%;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .modal-header h2 {
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .close-modal {
+            background: none;
+            border: none;
+            color: var(--text-color);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 0.8rem;
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            background-color: rgba(255, 255, 255, 0.1);
+            color: var(--text-color);
+        }
+
+        .form-actions {
+            display: flex;
+            justify-content: space-between;
+            gap: 1rem;
+        }
+
+        .admin-panel {
+            display: none;
+            background-color: var(--darker-bg);
+            padding: 2rem;
+            margin-top: 2rem;
+            border-radius: 15px;
+        }
+
+        .admin-controls {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .admin-card {
+            background-color: var(--card-bg);
+            padding: 1.5rem;
+            border-radius: 10px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .admin-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .admin-card i {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: var(--accent-color);
+        }
+
+        footer {
+            background-color: var(--darker-bg);
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            text-align: left;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 1.5rem;
+            color: var(--accent-color);
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-section a {
+            color: #aaa;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section a:hover {
+            color: var(--accent-color);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-links a {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            background-color: var(--primary-color);
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            margin-top: 3rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #aaa;
+        }
+
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            nav ul {
+                gap: 1rem;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .comparison {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .platform {
+                width: 100%;
+                max-width: 400px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="logo-container">
+            <img src="logo.png" alt="Kyron Animes" class="logo">
+            <div class="logo-text">Kyron Animes</div>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#home">Início</a></li>
+                <li><a href="#comparison">Comparação</a></li>
+                <li><a href="#simulator">App iOS</a></li>
+                <li><a href="#catalog">Catálogo</a></li>
+                <li><a href="#about">Sobre</a></li>
+            </ul>
+        </nav>
+        <div class="auth-buttons">
+            <button class="btn btn-primary" id="login-btn">Entrar</button>
+            <button class="btn btn-secondary" id="signup-btn">Cadastrar</button>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <h1>A Nova Era dos Animes e Mangás</h1>
+        <p>Kyron Animes combina o melhor do Crunchyroll e do Tomato Animes em uma plataforma totalmente gratuita, com interface moderna, catálogo completo e experiência premium sem custos.</p>
+        <button class="btn btn-primary">Explorar Catálogo</button>
+    </section>
+
+    <!-- Platform Comparison -->
+    <section class="comparison" id="comparison">
+        <div class="platform crunchyroll">
+            <h3>Crunchyroll</h3>
+            <ul>
+                <li><i class="fas fa-check"></i> Catálogo extenso</li>
+                <li><i class="fas fa-check"></i> Qualidade premium</li>
+                <li><i class="fas fa-times"></i> Conteúdo pago</li>
+                <li><i class="fas fa-times"></i> Sem mangás</li>
+                <li><i class="fas fa-times"></i> Anúncios na versão gratuita</li>
+            </ul>
+        </div>
+        
+        <div class="fusion-animation">
+            <div class="fusion-logo cr-logo">CR</div>
+            <div class="fusion-logo tomato-logo">TO</div>
+            <div class="fusion-logo kyron-logo">KY</div>
+        </div>
+        
+        <div class="platform tomato">
+            <h3>Tomato Animes</h3>
+            <ul>
+                <li><i class="fas fa-check"></i> Conteúdo gratuito</li>
+                <li><i class="fas fa-check"></i> Interface simples</li>
+                <li><i class="fas fa-times"></i> Qualidade variável</li>
+                <li><i class="fas fa-times"></i> Catálogo limitado</li>
+                <li><i class="fas fa-times"></i> Sem mangás</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Kyron Platform -->
+    <section class="comparison">
+        <div class="platform kyron">
+            <h3>Kyron Animes</h3>
+            <ul>
+                <li><i class="fas fa-check"></i> Totalmente gratuito</li>
+                <li><i class="fas fa-check"></i> Catálogo completo</li>
+                <li><i class="fas fa-check"></i> Animes e mangás</li>
+                <li><i class="fas fa-check"></i> Qualidade premium</li>
+                <li><i class="fas fa-check"></i> Interface moderna</li>
+                <li><i class="fas fa-check"></i> Sem anúncios</li>
+                <li><i class="fas fa-check"></i> Download para assistir offline</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- iOS Simulator -->
+    <section class="ios-simulator" id="simulator">
+        <h2 class="section-title">Experimente o App Kyron no iOS</h2>
+        <div class="simulator-container">
+            <div class="iphone-frame">
+                <div class="iphone-screen">
+                    <div class="app-home">
+                        <div class="app-header">
+                            <div class="app-logo">Kyron</div>
+                            <div class="app-nav">
+                                <i class="fas fa-search"></i>
+                                <i class="fas fa-bell"></i>
+                                <i class="fas fa-user"></i>
+                            </div>
+                        </div>
+                        <div class="welcome-msg">
+                            <h3>Bem-vindo, Otaku!</h3>
+                            <p>Continue de onde parou</p>
+                        </div>
+                        <div class="carousel">
+                            <div class="carousel-item">Attack on Titan</div>
+                            <div class="carousel-item">Demon Slayer</div>
+                            <div class="carousel-item">One Piece</div>
+                        </div>
+                        <div class="categories">
+                            <div class="category">
+                                <i class="fas fa-fire"></i>
+                                <p>Populares</p>
+                            </div>
+                            <div class="category">
+                                <i class="fas fa-star"></i>
+                                <p>Favoritos</p>
+                            </div>
+                            <div class="category">
+                                <i class="fas fa-book"></i>
+                                <p>Mangás</p>
+                            </div>
+                            <div class="category">
+                                <i class="fas fa-history"></i>
+                                <p>Histórico</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="simulator-controls">
+                <button class="btn btn-primary" id="start-app">Iniciar App</button>
+                <button class="btn btn-secondary" id="restart-sim">Reiniciar</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Catalog -->
+    <section class="catalog" id="catalog">
+        <h2 class="section-title">Catálogo de Animes</h2>
+        <div class="catalog-grid">
+            <div class="anime-card">
+                <div class="card-image">Attack on Titan</div>
+                <div class="card-content">
+                    <h3>Attack on Titan</h3>
+                    <p>Ação, Drama, Fantasia</p>
+                    <div class="card-actions">
+                        <button class="btn btn-primary">Assistir</button>
+                        <button class="btn btn-secondary">Detalhes</button>
+                    </div>
+                </div>
+            </div>
+            <div class="anime-card">
+                <div class="card-image">Demon Slayer</div>
+                <div class="card-content">
+                    <h3>Demon Slayer</h3>
+                    <p>Ação, Sobrenatural</p>
+                    <div class="card-actions">
+                        <button class="btn btn-primary">Assistir</button>
+                        <button class="btn btn-secondary">Detalhes</button>
+                    </div>
+                </div>
+            </div>
+            <div class="anime-card">
+                <div class="card-image">My Hero Academia</div>
+                <div class="card-content">
+                    <h3>My Hero Academia</h3>
+                    <p>Ação, Comédia, Super-herói</p>
+                    <div class="card-actions">
+                        <button class="btn btn-primary">Assistir</button>
+                        <button class="btn btn-secondary">Detalhes</button>
+                    </div>
+                </div>
+            </div>
+            <div class="anime-card">
+                <div class="card-image">One Piece</div>
+                <div class="card-content">
+                    <h3>One Piece</h3>
+                    <p>Aventura, Comédia, Fantasia</p>
+                    <div class="card-actions">
+                        <button class="btn btn-primary">Assistir</button>
+                        <button class="btn btn-secondary">Detalhes</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <h2 class="section-title" style="margin-top: 4rem;">Catálogo de Mangás</h2>
+        <div class="catalog-grid">
+            <div class="manga-card">
+                <div class="card-image">Berserk</div>
+                <div class="card-content">
+                    <h3>Berserk</h3>
+                    <p>Ação, Fantasia Sombria</p>
+                    <div class="card-actions">
+                        <button class="btn btn-primary">Ler</button>
+                        <button class="btn btn-secondary">Detalhes</button>
+                    </div>
+                </div>
+            </div>
+            <div class="manga-card">
+                <div class="card-image">Death Note</div>
+                <div class="card-content">
+                    <h3>Death Note</h3>
+                    <p>Mistério, Psicológico, Sobrenatural</p>
+                    <div class="card-actions">
+                        <button class="btn btn-primary">Ler</button>
+                        <button class="btn btn-secondary">Detalhes</button>
+                    </div>
+                </div>
+            </div>
+            <div class="manga-card">
+                <div class="card-image">Tokyo Ghoul</div>
+                <div class="card-content">
+                    <h3>Tokyo Ghoul</h3>
+                    <p>Ação, Horror, Psicológico</p>
+                    <div class="card-actions">
+                        <button class="btn btn-primary">Ler</button>
+                        <button class="btn btn-secondary">Detalhes</button>
+                    </div>
+                </div>
+            </div>
+            <div class="manga-card">
+                <div class="card-image">One Punch Man</div>
+                <div class="card-content">
+                    <h3>One Punch Man</h3>
+                    <p>Ação, Comédia, Paródia</p>
+                    <div class="card-actions">
+                        <button class="btn btn-primary">Ler</button>
+                        <button class="btn btn-secondary">Detalhes</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Login Modal -->
+    <div class="login-modal" id="login-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Entrar na Kyron</h2>
+                <button class="close-modal">&times;</button>
+            </div>
+            <form id="login-form">
+                <div class="form-group">
+                    <label for="login-email">E-mail</label>
+                    <input type="email" id="login-email" required>
+                </div>
+                <div class="form-group">
+                    <label for="login-password">Senha</label>
+                    <input type="password" id="login-password" required>
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="btn btn-secondary" id="close-login">Cancelar</button>
+                    <button type="submit" class="btn btn-primary">Entrar</button>
+                </div>
+            </form>
+            <p style="text-align: center; margin-top: 1rem;">
+                <a href="#" id="admin-login-link">Acesso Administrativo</a>
+            </p>
+        </div>
+    </div>
+
+    <!-- Admin Login Modal -->
+    <div class="login-modal" id="admin-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Acesso Administrativo</h2>
+                <button class="close-modal">&times;</button>
+            </div>
+            <form id="admin-form">
+                <div class="form-group">
+                    <label for="admin-email">E-mail</label>
+                    <input type="email" id="admin-email" required>
+                </div>
+                <div class="form-group">
+                    <label for="admin-password">Senha</label>
+                    <input type="password" id="admin-password" required>
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="btn btn-secondary" id="close-admin">Cancelar</button>
+                    <button type="submit" class="btn btn-primary">Acessar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Admin Panel -->
+    <section class="admin-panel" id="admin-panel">
+        <h2 class="section-title">Painel Administrativo</h2>
+        <p>Bem-vindo, Administrador! Aqui você pode gerenciar o conteúdo da plataforma.</p>
+        
+        <div class="admin-controls">
+            <div class="admin-card">
+                <i class="fas fa-film"></i>
+                <h3>Gerenciar Animes</h3>
+                <p>Adicionar, editar ou remover animes</p>
+            </div>
+            <div class="admin-card">
+                <i class="fas fa-book"></i>
+                <h3>Gerenciar Mangás</h3>
+                <p>Adicionar, editar ou remover mangás</p>
+            </div>
+            <div class="admin-card">
+                <i class="fas fa-users"></i>
+                <h3>Gerenciar Usuários</h3>
+                <p>Visualizar e gerenciar usuários</p>
+            </div>
+            <div class="admin-card">
+                <i class="fas fa-chart-bar"></i>
+                <h3>Estatísticas</h3>
+                <p>Visualizar dados de uso da plataforma</p>
+            </div>
+            <div class="admin-card">
+                <i class="fas fa-cog"></i>
+                <h3>Configurações</h3>
+                <p>Configurar a plataforma</p>
+            </div>
+            <div class="admin-card">
+                <i class="fas fa-upload"></i>
+                <h3>Upload de Conteúdo</h3>
+                <p>Fazer upload de novos episódios e capítulos</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Kyron Animes</h3>
+                <p>A plataforma definitiva para fãs de animes e mangás, combinando o melhor do Crunchyroll e Tomato Animes em uma experiência totalmente gratuita.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-discord"></i></a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>Links Rápidos</h3>
+                <ul>
+                    <li><a href="#home">Início</a></li>
+                    <li><a href="#comparison">Comparação</a></li>
+                    <li><a href="#simulator">App iOS</a></li>
+                    <li><a href="#catalog">Catálogo</a></li>
+                    <li><a href="#about">Sobre</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Categorias</h3>
+                <ul>
+                    <li><a href="#">Ação</a></li>
+                    <li><a href="#">Aventura</a></li>
+                    <li><a href="#">Comédia</a></li>
+                    <li><a href="#">Drama</a></li>
+                    <li><a href="#">Fantasia</a></li>
+                    <li><a href="#">Ficção Científica</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Contato</h3>
+                <ul>
+                    <li><i class="fas fa-envelope"></i> contato@kyronanimes.com</li>
+                    <li><i class="fas fa-phone"></i> (11) 99999-9999</li>
+                    <li><i class="fas fa-map-marker-alt"></i> São Paulo, Brasil</li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            &copy; 2023 Kyron Animes. Todos os direitos reservados.
+        </div>
+    </footer>
+
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-storage.js"></script>
+
+    <script>
+        // Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyDummyAPIKeyForExampleOnly",
+            authDomain: "kyron-animes.firebaseapp.com",
+            projectId: "kyron-animes",
+            storageBucket: "kyron-animes.appspot.com",
+            messagingSenderId: "123456789",
+            appId: "1:123456789:web:abcdef123456"
+        };
+
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        const auth = firebase.auth();
+        const db = firebase.firestore();
+        const storage = firebase.storage();
+
+        // DOM Elements
+        const loginBtn = document.getElementById('login-btn');
+        const signupBtn = document.getElementById('signup-btn');
+        const loginModal = document.getElementById('login-modal');
+        const adminModal = document.getElementById('admin-modal');
+        const closeLogin = document.getElementById('close-login');
+        const closeAdmin = document.getElementById('close-admin');
+        const closeModalBtns = document.querySelectorAll('.close-modal');
+        const loginForm = document.getElementById('login-form');
+        const adminForm = document.getElementById('admin-form');
+        const adminLoginLink = document.getElementById('admin-login-link');
+        const adminPanel = document.getElementById('admin-panel');
+        const startAppBtn = document.getElementById('start-app');
+        const restartSimBtn = document.getElementById('restart-sim');
+        const iphoneScreen = document.querySelector('.iphone-screen');
+
+        // Show login modal
+        loginBtn.addEventListener('click', () => {
+            loginModal.style.display = 'flex';
+        });
+
+        // Show signup modal (simplified for this example)
+        signupBtn.addEventListener('click', () => {
+            loginModal.style.display = 'flex';
+            // In a real implementation, we would switch to a signup form
+        });
+
+        // Close modals
+        closeLogin.addEventListener('click', () => {
+            loginModal.style.display = 'none';
+        });
+
+        closeAdmin.addEventListener('click', () => {
+            adminModal.style.display = 'none';
+        });
+
+        closeModalBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                loginModal.style.display = 'none';
+                adminModal.style.display = 'none';
+            });
+        });
+
+        // Show admin login
+        adminLoginLink.addEventListener('click', (e) => {
+            e.preventDefault();
+            loginModal.style.display = 'none';
+            adminModal.style.display = 'flex';
+        });
+
+        // Login form submission
+        loginForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const email = document.getElementById('login-email').value;
+            const password = document.getElementById('login-password').value;
+            
+            // Firebase authentication would go here
+            // For this example, we'll just simulate a successful login
+            console.log('Login attempt with:', email, password);
+            alert('Login realizado com sucesso!');
+            loginModal.style.display = 'none';
+        });
+
+        // Admin form submission
+        adminForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const email = document.getElementById('admin-email').value;
+            const password = document.getElementById('admin-password').value;
+            
+            // Check if it's the admin email
+            if (email === 'kartywillytdc@gmail.com') {
+                console.log('Admin login attempt with:', email, password);
+                alert('Acesso administrativo concedido!');
+                adminModal.style.display = 'none';
+                adminPanel.style.display = 'block';
+                
+                // Scroll to admin panel
+                adminPanel.scrollIntoView({ behavior: 'smooth' });
+            } else {
+                alert('Credenciais administrativas inválidas!');
+            }
+        });
+
+        // iOS Simulator functionality
+        startAppBtn.addEventListener('click', () => {
+            iphoneScreen.innerHTML = `
+                <div class="app-home">
+                    <div class="app-header">
+                        <div class="app-logo">Kyron</div>
+                        <div class="app-nav">
+                            <i class="fas fa-search"></i>
+                            <i class="fas fa-bell"></i>
+                            <i class="fas fa-user"></i>
+                        </div>
+                    </div>
+                    <div style="display: flex; flex-direction: column; height: 100%; justify-content: center; align-items: center; gap: 20px;">
+                        <div style="font-size: 2rem; color: var(--primary-color);">
+                            <i class="fas fa-play-circle"></i>
+                        </div>
+                        <h3>Bem-vindo ao Kyron Animes</h3>
+                        <p>Selecione um anime para assistir</p>
+                        <button class="btn btn-primary" style="margin-top: 20px;">Explorar Catálogo</button>
+                    </div>
+                </div>
+            `;
+        });
+
+        restartSimBtn.addEventListener('click', () => {
+            iphoneScreen.innerHTML = `
+                <div class="app-home">
+                    <div class="app-header">
+                        <div class="app-logo">Kyron</div>
+                        <div class="app-nav">
+                            <i class="fas fa-search"></i>
+                            <i class="fas fa-bell"></i>
+                            <i class="fas fa-user"></i>
+                        </div>
+                    </div>
+                    <div class="welcome-msg">
+                        <h3>Bem-vindo, Otaku!</h3>
+                        <p>Continue de onde parou</p>
+                    </div>
+                    <div class="carousel">
+                        <div class="carousel-item">Attack on Titan</div>
+                        <div class="carousel-item">Demon Slayer</div>
+                        <div class="carousel-item">One Piece</div>
+                    </div>
+                    <div class="categories">
+                        <div class="category">
+                            <i class="fas fa-fire"></i>
+                            <p>Populares</p>
+                        </div>
+                        <div class="category">
+                            <i class="fas fa-star"></i>
+                            <p>Favoritos</p>
+                        </div>
+                        <div class="category">
+                            <i class="fas fa-book"></i>
+                            <p>Mangás</p>
+                        </div>
+                        <div class="category">
+                            <i class="fas fa-history"></i>
+                            <p>Histórico</p>
+                        </div>
+                    </div>
+                </div>
+            `;
+        });
+
+        // Close modals when clicking outside
+        window.addEventListener('click', (e) => {
+            if (e.target === loginModal) {
+                loginModal.style.display = 'none';
+            }
+            if (e.target === adminModal) {
+                adminModal.style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html>

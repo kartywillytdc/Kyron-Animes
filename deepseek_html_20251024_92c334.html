@@ -1,0 +1,1137 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kyron Animes - A Revolução dos Animes</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&family=Oxanium:wght@400;600;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --crunchyroll-orange: #f47521;
+            --crunchyroll-dark: #121212;
+            --tomato-red: #ff6347;
+            --tomato-dark: #0a0a0a;
+            --kyron-purple: #8a2be2;
+            --kyron-dark: #121212;
+            --kyron-light: #a855f7;
+            --text-light: #f0f0f0;
+            --text-gray: #b0b0b0;
+            --transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            --transition-fast: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--crunchyroll-dark);
+            color: var(--text-light);
+            overflow-x: hidden;
+            font-family: 'Montserrat', sans-serif;
+            transition: background-color 1.5s ease;
+            line-height: 1.7;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Oxanium', cursive;
+            font-weight: 800;
+        }
+
+        section {
+            min-height: 100vh;
+            padding: 6rem 2rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            width: 100%;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: 3.5rem;
+            margin-bottom: 2rem;
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 1s ease;
+        }
+
+        .section-title.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .section-subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 3rem;
+            text-align: center;
+            max-width: 800px;
+            color: var(--text-gray);
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 1s ease 0.2s;
+        }
+
+        .section-subtitle.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Hero Section */
+        .hero-section {
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(244, 117, 33, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(255, 99, 71, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 40% 80%, rgba(138, 43, 226, 0.1) 0%, transparent 50%),
+                linear-gradient(135deg, #000000 0%, #1a0f00 100%);
+            text-align: center;
+            position: relative;
+        }
+
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><polygon fill="rgba(138,43,226,0.03)" points="0,750 250,750 250,1000 0,1000"/><polygon fill="rgba(244,117,33,0.03)" points="750,0 1000,0 1000,250 750,250"/><polygon fill="rgba(255,99,71,0.03)" points="500,500 750,500 750,750 500,750"/></svg>');
+            z-index: 0;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-title {
+            font-size: 5rem;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, var(--crunchyroll-orange), var(--tomato-red), var(--kyron-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 1s ease;
+        }
+
+        .hero-title.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .hero-subtitle {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 1s ease 0.3s;
+        }
+
+        .hero-subtitle.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .hero-description {
+            font-size: 1.3rem;
+            max-width: 800px;
+            margin: 0 auto 3rem;
+            line-height: 1.8;
+            color: var(--text-gray);
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 1s ease 0.5s;
+        }
+
+        .hero-description.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1.2rem 3rem;
+            background: linear-gradient(135deg, var(--kyron-purple), var(--kyron-light));
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.2rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 10px 30px rgba(138, 43, 226, 0.4);
+            transition: var(--transition-fast);
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .cta-button.visible {
+            opacity: 1;
+            transform: translateY(0);
+            transition: all 1s ease 0.7s;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(138, 43, 226, 0.6);
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: bounce 2s infinite;
+            opacity: 0;
+            transition: opacity 1s ease 1s;
+            color: var(--kyron-purple);
+        }
+
+        .scroll-indicator.visible {
+            opacity: 1;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateX(-50%) translateY(0);
+            }
+            40% {
+                transform: translateX(-50%) translateY(-10px);
+            }
+            60% {
+                transform: translateX(-50%) translateY(-5px);
+            }
+        }
+
+        /* Platform Sections */
+        .platform-section {
+            position: relative;
+        }
+
+        .platform-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><polygon fill="rgba(255,255,255,0.02)" points="0,0 100,0 100,100 0,100"/><polygon fill="rgba(255,255,255,0.02)" points="450,450 550,450 550,550 450,550"/><polygon fill="rgba(255,255,255,0.02)" points="900,900 1000,900 1000,1000 900,1000"/></svg>');
+            z-index: 0;
+        }
+
+        .crunchyroll-section {
+            background: 
+                radial-gradient(circle at 10% 20%, rgba(244, 117, 33, 0.1) 0%, transparent 40%),
+                radial-gradient(circle at 90% 80%, rgba(244, 117, 33, 0.05) 0%, transparent 40%),
+                linear-gradient(135deg, var(--crunchyroll-dark) 0%, #1a0f00 100%);
+        }
+
+        .tomato-section {
+            background: 
+                radial-gradient(circle at 90% 20%, rgba(255, 99, 71, 0.1) 0%, transparent 40%),
+                radial-gradient(circle at 10% 80%, rgba(255, 99, 71, 0.05) 0%, transparent 40%),
+                linear-gradient(135deg, var(--tomato-dark) 0%, #1a0000 100%);
+        }
+
+        .platform-header {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 4rem;
+        }
+
+        .platform-logo {
+            width: 200px;
+            height: 200px;
+            margin-bottom: 2rem;
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            transition: var(--transition);
+            opacity: 0;
+            transform: translateY(50px);
+            filter: drop-shadow(0 0 20px rgba(0, 0, 0, 0.5));
+        }
+
+        .platform-logo.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .crunchyroll-logo {
+            background-image: url('https://via.placeholder.com/200x200/121212/f47521?text=CRUNCHYROLL');
+            filter: drop-shadow(0 0 15px rgba(244, 117, 33, 0.7));
+        }
+
+        .tomato-logo {
+            background-image: url('https://via.placeholder.com/200x200/0a0a0a/ff6347?text=TOMATO+ANIMES');
+            filter: drop-shadow(0 0 15px rgba(255, 99, 71, 0.7));
+        }
+
+        .platform-logo:hover {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        .platform-title {
+            color: inherit;
+            text-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+        }
+
+        .crunchyroll-title {
+            color: var(--crunchyroll-orange);
+        }
+
+        .tomato-title {
+            color: var(--tomato-red);
+        }
+
+        .platform-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2.5rem;
+            max-width: 1200px;
+        }
+
+        .feature-card {
+            background: rgba(0, 0, 0, 0.4);
+            padding: 2.5rem;
+            border-radius: 20px;
+            border-left: 5px solid;
+            transition: var(--transition);
+            opacity: 0;
+            transform: translateY(50px);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .feature-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .crunchyroll-feature {
+            border-left-color: var(--crunchyroll-orange);
+        }
+
+        .tomato-feature {
+            border-left-color: var(--tomato-red);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .crunchyroll-feature .feature-icon {
+            color: var(--crunchyroll-orange);
+        }
+
+        .tomato-feature .feature-icon {
+            color: var(--tomato-red);
+        }
+
+        .feature-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .feature-card p {
+            color: var(--text-gray);
+            line-height: 1.7;
+        }
+
+        /* Fusion Animation Section */
+        .fusion-section {
+            background: 
+                radial-gradient(circle at 50% 50%, rgba(138, 43, 226, 0.2) 0%, transparent 60%),
+                linear-gradient(135deg, #0a0014 0%, #1a0029 50%, #0a0014 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .fusion-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><polygon fill="rgba(138,43,226,0.05)" points="0,0 1000,500 0,1000"/></svg>');
+            z-index: 0;
+        }
+
+        .fusion-title {
+            color: var(--kyron-purple);
+            text-shadow: 0 0 20px rgba(138, 43, 226, 0.7);
+            margin-bottom: 4rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .fusion-container {
+            width: 100%;
+            max-width: 1000px;
+            height: 500px;
+            position: relative;
+            margin: 2rem auto;
+            perspective: 1000px;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 1s ease;
+        }
+
+        .fusion-container.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .fusion-platform {
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            border-radius: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            transition: var(--transition);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+            backface-visibility: hidden;
+            opacity: 0;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .crunchyroll-fusion {
+            background: linear-gradient(135deg, var(--crunchyroll-dark) 0%, #2a1a00 100%);
+            border: 3px solid var(--crunchyroll-orange);
+            left: 10%;
+            top: 20%;
+            transform: rotateY(0deg);
+            z-index: 3;
+        }
+
+        .tomato-fusion {
+            background: linear-gradient(135deg, var(--tomato-dark) 0%, #2a0000 100%);
+            border: 3px solid var(--tomato-red);
+            right: 10%;
+            top: 20%;
+            transform: rotateY(0deg);
+            z-index: 3;
+        }
+
+        .fusion-effect {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background: radial-gradient(circle, var(--kyron-purple) 0%, transparent 70%);
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0);
+            opacity: 0;
+            filter: blur(20px);
+            z-index: 2;
+            transition: var(--transition);
+        }
+
+        .kyron-result {
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            background: linear-gradient(135deg, var(--kyron-dark) 0%, #2a0a4a 100%);
+            border: 3px solid var(--kyron-purple);
+            border-radius: 20px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0) rotateY(180deg);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: var(--transition);
+            box-shadow: 0 0 50px rgba(138, 43, 226, 0.7);
+            z-index: 1;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .kyron-logo {
+            width: 150px;
+            height: 150px;
+            background-image: url('https://via.placeholder.com/150x150/121212/8a2be2?text=KYRON');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            margin-bottom: 1.5rem;
+            filter: drop-shadow(0 0 15px rgba(138, 43, 226, 0.7));
+        }
+
+        .fusion-active .crunchyroll-fusion {
+            transform: translateX(150px) rotateY(30deg);
+            opacity: 1;
+        }
+
+        .fusion-active .tomato-fusion {
+            transform: translateX(-150px) rotateY(-30deg);
+            opacity: 1;
+        }
+
+        .fusion-active .fusion-effect {
+            transform: translate(-50%, -50%) scale(5);
+            opacity: 0.7;
+        }
+
+        .fusion-active .kyron-result {
+            transform: translate(-50%, -50%) scale(1) rotateY(0deg);
+            opacity: 1;
+            z-index: 4;
+        }
+
+        .fusion-text {
+            max-width: 900px;
+            text-align: center;
+            margin-top: 3rem;
+            font-size: 1.2rem;
+            line-height: 1.8;
+            position: relative;
+            z-index: 2;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 1s ease;
+        }
+
+        .fusion-text.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .kyron-highlight {
+            color: var(--kyron-purple);
+            font-weight: bold;
+        }
+
+        /* Kyron Section */
+        .kyron-section {
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(138, 43, 226, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(138, 43, 226, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 40% 40%, rgba(138, 43, 226, 0.1) 0%, transparent 50%),
+                linear-gradient(135deg, var(--kyron-dark) 0%, #1a0a2a 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .kyron-title {
+            color: var(--kyron-purple);
+            text-shadow: 0 0 20px rgba(138, 43, 226, 0.7);
+            position: relative;
+            z-index: 2;
+        }
+
+        .kyron-benefits {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2.5rem;
+            max-width: 1200px;
+            margin-top: 3rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .benefit-card {
+            background: rgba(30, 10, 50, 0.6);
+            padding: 2.5rem;
+            border-radius: 20px;
+            border: 1px solid rgba(138, 43, 226, 0.3);
+            transition: var(--transition);
+            text-align: center;
+            opacity: 0;
+            transform: translateY(50px);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .benefit-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .benefit-card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 20px 40px rgba(138, 43, 226, 0.3);
+            border-color: var(--kyron-purple);
+        }
+
+        .benefit-icon {
+            font-size: 3rem;
+            color: var(--kyron-purple);
+            margin-bottom: 1.5rem;
+        }
+
+        .benefit-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--text-light);
+        }
+
+        .benefit-card p {
+            color: var(--text-gray);
+            line-height: 1.7;
+        }
+
+        /* Video Section */
+        .video-section {
+            background: 
+                radial-gradient(circle at 30% 70%, rgba(138, 43, 226, 0.1) 0%, transparent 50%),
+                linear-gradient(135deg, #0a0014 0%, #1a0029 100%);
+            padding: 6rem 2rem;
+        }
+
+        .video-container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+            position: relative;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 1s ease;
+            border: 1px solid rgba(138, 43, 226, 0.3);
+        }
+
+        .video-container.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .video-placeholder {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 aspect ratio */
+            height: 0;
+            overflow: hidden;
+        }
+
+        .video-placeholder iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .video-title {
+            padding: 2rem;
+            text-align: center;
+            font-size: 1.5rem;
+            color: var(--kyron-purple);
+            background: rgba(0, 0, 0, 0.7);
+            font-weight: 600;
+        }
+
+        /* Footer */
+        footer {
+            background: #000;
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        .credits {
+            font-size: 1.1rem;
+            color: #aaa;
+            margin-top: 2rem;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 1s ease;
+        }
+
+        .credits.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .developer {
+            color: var(--kyron-purple);
+            font-weight: bold;
+        }
+
+        /* Navigation */
+        .nav-dots {
+            position: fixed;
+            right: 2rem;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 100;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .nav-dot {
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            cursor: pointer;
+            transition: var(--transition-fast);
+            position: relative;
+        }
+
+        .nav-dot::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0);
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            border: 2px solid var(--kyron-purple);
+            transition: var(--transition-fast);
+        }
+
+        .nav-dot.active {
+            background: var(--kyron-purple);
+        }
+
+        .nav-dot.active::after {
+            transform: translate(-50%, -50%) scale(1);
+        }
+
+        /* Floating Elements */
+        .floating-elements {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .floating-element {
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            background: rgba(138, 43, 226, 0.1);
+            border-radius: 50%;
+            animation: float 15s infinite linear;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .section-title {
+                font-size: 2.5rem;
+            }
+
+            .hero-title {
+                font-size: 3rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.5rem;
+            }
+
+            .fusion-container {
+                height: 400px;
+            }
+
+            .fusion-platform {
+                width: 200px;
+                height: 200px;
+            }
+
+            .kyron-result {
+                width: 300px;
+                height: 300px;
+            }
+
+            .platform-features, .kyron-benefits {
+                grid-template-columns: 1fr;
+            }
+
+            .nav-dots {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Floating Elements -->
+    <div class="floating-elements" id="floating-elements"></div>
+
+    <!-- Navigation Dots -->
+    <div class="nav-dots">
+        <div class="nav-dot active" data-section="hero"></div>
+        <div class="nav-dot" data-section="crunchyroll"></div>
+        <div class="nav-dot" data-section="tomato"></div>
+        <div class="nav-dot" data-section="fusion"></div>
+        <div class="nav-dot" data-section="kyron"></div>
+        <div class="nav-dot" data-section="video"></div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero-section" id="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title">Kyron Animes</h1>
+                <h2 class="hero-subtitle">A Revolução dos Animes Está Aqui</h2>
+                <p class="hero-description">
+                    O Kyron Animes representa a fusão perfeita entre a excelência do Crunchyroll e a acessibilidade do Tomato Animes. 
+                    Criamos uma plataforma revolucionária que oferece conteúdo premium de forma totalmente gratuita, unindo o melhor 
+                    dos dois mundos em uma experiência única para todos os fãs de animes.
+                </p>
+                <a href="#fusion" class="cta-button">Descubra a Fusão</a>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <i class="fas fa-chevron-down fa-2x"></i>
+        </div>
+    </section>
+
+    <!-- Crunchyroll Section -->
+    <section class="platform-section crunchyroll-section" id="crunchyroll">
+        <div class="container">
+            <div class="platform-header">
+                <div class="platform-logo crunchyroll-logo"></div>
+                <h1 class="section-title platform-title crunchyroll-title">Crunchyroll Animes</h1>
+                <p class="section-subtitle">A referência em qualidade e conteúdo premium para otakus exigentes</p>
+            </div>
+            
+            <div class="platform-features">
+                <div class="feature-card crunchyroll-feature">
+                    <div class="feature-icon">
+                        <i class="fas fa-crown"></i>
+                    </div>
+                    <h3>Conteúdo Exclusivo</h3>
+                    <p>Catálogo extenso com lançamentos simultâneos ao Japão via simulcast, filmes exclusivos e séries originais produzidas com o mais alto padrão de qualidade.</p>
+                </div>
+                <div class="feature-card crunchyroll-feature">
+                    <div class="feature-icon">
+                        <i class="fas fa-tv"></i>
+                    </div>
+                    <h3>Experiência Premium</h3>
+                    <p>Interface sofisticada, qualidade de vídeo até 4K HDR, múltiplas opções de áudio e legendas, com recursos avançados de personalização da experiência.</p>
+                </div>
+                <div class="feature-card crunchyroll-feature">
+                    <div class="feature-icon">
+                        <i class="fas fa-globe"></i>
+                    </div>
+                    <h3>Comunidade Global</h3>
+                    <p>Conecte-se com milhões de fãs worldwide, participe de eventos exclusivos, convenções e tenha acesso a conteúdo behind-the-scenes dos estúdios japoneses.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tomato Animes Section -->
+    <section class="platform-section tomato-section" id="tomato">
+        <div class="container">
+            <div class="platform-header">
+                <div class="platform-logo tomato-logo"></div>
+                <h1 class="section-title platform-title tomato-title">Tomato Animes</h1>
+                <p class="section-subtitle">A plataforma da comunidade, feita por fãs para fãs</p>
+            </div>
+            
+            <div class="platform-features">
+                <div class="feature-card tomato-feature">
+                    <div class="feature-icon">
+                        <i class="fas fa-unlock"></i>
+                    </div>
+                    <h3>Acesso Democrático</h3>
+                    <p>Conteúdo disponível para todos, sem barreiras financeiras. Uma verdadeira plataforma comunitária onde o foco está no compartilhamento da paixão por animes.</p>
+                </div>
+                <div class="feature-card tomato-feature">
+                    <div class="feature-icon">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <h3>Simplicidade e Agilidade</h3>
+                    <p>Interface intuitiva que prioriza a experiência do usuário. Navegação fluida, busca eficiente e organização que facilita encontrar exatamente o que procura.</p>
+                </div>
+                <div class="feature-card tomato-feature">
+                    <div class="feature-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>Espírito Comunitário</h3>
+                    <p>Criado e mantido pela comunidade otaku, com sistemas de recomendação entre usuários, fóruns ativos e suporte colaborativo entre os membros.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Fusion Animation Section -->
+    <section class="fusion-section" id="fusion">
+        <div class="container">
+            <h1 class="section-title fusion-title">A Fusão Definitiva</h1>
+            <p class="section-subtitle">Dois gigantes se unem para criar o futuro dos animes</p>
+            
+            <div class="fusion-container">
+                <div class="fusion-platform crunchyroll-fusion">
+                    <h3>Crunchyroll</h3>
+                    <p>Qualidade Inigualável</p>
+                    <p>Conteúdo Exclusivo</p>
+                    <p>Experiência Premium</p>
+                </div>
+                
+                <div class="fusion-platform tomato-fusion">
+                    <h3>Tomato Animes</h3>
+                    <p>Acesso Ilimitado</p>
+                    <p>Comunidade Ativa</p>
+                    <p>Simplicidade</p>
+                </div>
+                
+                <div class="fusion-effect"></div>
+                
+                <div class="kyron-result">
+                    <div class="kyron-logo"></div>
+                    <h2>Kyron Animes</h2>
+                    <p>A Nova Era dos Animes</p>
+                    <p>O Melhor dos Dois Mundos</p>
+                </div>
+            </div>
+            
+            <div class="fusion-text">
+                <p>Em um movimento histórico que redefine o ecossistema de animes, as forças complementares do <span class="kyron-highlight">Crunchyroll</span> e do <span class="kyron-highlight">Tomato Animes</span> convergem para criar uma plataforma revolucionária. Esta fusão estratégica combina a excelência técnica e o catálogo premium do Crunchyroll com a filosofia de acesso democrático e comunitário do Tomato Animes.</p>
+                
+                <p style="margin-top: 1.5rem;">O <span class="kyron-highlight">Kyron Animes</span> nasce com a missão ambiciosa de eliminar as barreiras que separam os fãs de animes do conteúdo de qualidade. Ao unir o melhor dos dois mundos, criamos um ecossistema onde a qualidade técnica de ponta coexiste com a acessibilidade universal, onde a curadoria profissional se alia à sabedoria da comunidade, e onde a experiência premium está disponível para todos, sem exceção.</p>
+                
+                <p style="margin-top: 1.5rem;">Esta não é apenas uma fusão de plataformas, mas uma convergência de filosofias que dará origem à próxima geração de streaming de animes - mais inclusiva, mais tecnológica e mais conectada com as reais necessidades da comunidade otaku global.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Kyron Animes Section -->
+    <section class="kyron-section" id="kyron">
+        <div class="container">
+            <h1 class="section-title kyron-title">Kyron Animes</h1>
+            <p class="section-subtitle">A plataforma definitiva que une o melhor de todos os mundos</p>
+            
+            <div class="kyron-benefits">
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-gem"></i>
+                    </div>
+                    <h3>Qualidade Cinematográfica</h3>
+                    <p>Todo o catálogo disponível em até 4K HDR com codecs de última geração. Experiência visual imersiva com som surround e opções de dublagem profissional.</p>
+                </div>
+                
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-dollar-sign"></i>
+                    </div>
+                    <h3>Totalmente Gratuito</h3>
+                    <p>Acesso completo a todo o conteúdo sem custos, assinaturas ou anúncios intrusivos. Sustentado por um modelo inovador de patrocínio comunitário.</p>
+                </div>
+                
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-book"></i>
+                    </div>
+                    <h3>Ecossistema Completo</h3>
+                    <p>Animes, mangás, light novels, doramas e conteúdo original em uma plataforma integrada. Biblioteca em constante expansão com curadoria colaborativa.</p>
+                </div>
+                
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-rocket"></i>
+                    </div>
+                    <h3>Tecnologia de Ponta</h3>
+                    <p>Interface adaptativa com IA, recomendações personalizadas, player inteligente e recursos sociais integrados para uma experiência verdadeiramente única.</p>
+                </div>
+                
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-download"></i>
+                    </div>
+                    <h3>Download Ilimitado</h3>
+                    <p>Assista offline em qualquer dispositivo sem restrições. Sincronização em nuvem mantém seu progresso em todos os dispositivos automaticamente.</p>
+                </div>
+                
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-globe-americas"></i>
+                    </div>
+                    <h3>Comunidade Global</h3>
+                    <p>Conecte-se com otakus worldwide, participe de watch parties, eventos ao vivo e tenha voz ativa no desenvolvimento da plataforma através de votações comunitárias.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Video Section -->
+    <section class="video-section" id="video">
+        <div class="container">
+            <h1 class="section-title fusion-title">A Revolução em Vídeo</h1>
+            <p class="section-subtitle">Assista ao manifesto que está transformando o mundo dos animes</p>
+            
+            <div class="video-container">
+                <div class="video-title">
+                    Kyron Animes: O Futuro dos Animes é Agora
+                </div>
+                <div class="video-placeholder">
+                    <!-- Vídeo do YouTube integrado -->
+                    <iframe src="https://www.youtube.com/embed/ZAU2LjSHK7M?si=qADWd3aGOVyTq6m4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="credits">
+                Site desenvolvido por <span class="developer">Karty Willy</span> através do <span class="developer">DeepSeek</span> | 
+                <a href="https://github.com/kartywilly" style="color: var(--kyron-purple); text-decoration: none; font-weight: 600;">GitHub</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Create floating elements
+        const floatingContainer = document.getElementById('floating-elements');
+        for (let i = 0; i < 15; i++) {
+            const element = document.createElement('div');
+            element.className = 'floating-element';
+            element.style.left = `${Math.random() * 100}%`;
+            element.style.animationDelay = `${Math.random() * 15}s`;
+            element.style.animationDuration = `${15 + Math.random() * 10}s`;
+            element.style.width = `${20 + Math.random() * 30}px`;
+            element.style.height = element.style.width;
+            floatingContainer.appendChild(element);
+        }
+
+        // Scroll animations
+        const animatedElements = document.querySelectorAll('.section-title, .section-subtitle, .hero-title, .hero-subtitle, .hero-description, .scroll-indicator, .cta-button, .platform-logo, .feature-card, .fusion-container, .fusion-text, .benefit-card, .video-container, .credits');
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    
+                    // Trigger fusion animation when fusion section is visible
+                    if (entry.target.classList.contains('fusion-container')) {
+                        setTimeout(() => {
+                            document.querySelector('.fusion-container').classList.add('fusion-active');
+                        }, 1000);
+                    }
+                }
+            });
+        }, { threshold: 0.1 });
+        
+        animatedElements.forEach(el => {
+            observer.observe(el);
+        });
+
+        // Navigation dots
+        const sections = document.querySelectorAll('section');
+        const navDots = document.querySelectorAll('.nav-dot');
+        
+        window.addEventListener('scroll', () => {
+            let current = '';
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                
+                if (pageYOffset >= sectionTop - 300) {
+                    current = section.getAttribute('id');
+                }
+            });
+            
+            navDots.forEach(dot => {
+                dot.classList.remove('active');
+                if (dot.getAttribute('data-section') === current) {
+                    dot.classList.add('active');
+                }
+            });
+        });
+        
+        // Click navigation
+        navDots.forEach(dot => {
+            dot.addEventListener('click', () => {
+                const sectionId = dot.getAttribute('data-section');
+                document.getElementById(sectionId).scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+
+        // Background color transition between sections
+        window.addEventListener('scroll', () => {
+            const scrollY = window.scrollY;
+            const windowHeight = window.innerHeight;
+            const docHeight = document.documentElement.scrollHeight;
+            
+            // Calculate scroll percentage
+            const scrollPercent = scrollY / (docHeight - windowHeight);
+            
+            // Change body background based on scroll position
+            if (scrollPercent < 0.15) {
+                document.body.style.backgroundColor = '#121212'; // Hero dark
+            } else if (scrollPercent < 0.3) {
+                document.body.style.backgroundColor = '#121212'; // Crunchyroll dark
+            } else if (scrollPercent < 0.45) {
+                document.body.style.backgroundColor = '#0a0a0a'; // Tomato dark
+            } else if (scrollPercent < 0.7) {
+                document.body.style.backgroundColor = '#0a0014'; // Fusion dark
+            } else if (scrollPercent < 0.85) {
+                document.body.style.backgroundColor = '#121212'; // Kyron dark
+            } else {
+                document.body.style.backgroundColor = '#0a0014'; // Video dark
+            }
+        });
+
+        // Initialize first section as visible
+        window.addEventListener('load', () => {
+            document.querySelector('.hero-title').classList.add('visible');
+            document.querySelector('.hero-subtitle').classList.add('visible');
+            document.querySelector('.hero-description').classList.add('visible');
+            document.querySelector('.cta-button').classList.add('visible');
+            document.querySelector('.scroll-indicator').classList.add('visible');
+        });
+    </script>
+</body>
+</html>
